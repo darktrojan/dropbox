@@ -65,6 +65,7 @@ saveButton.onclick = async () => {
   if (response.ok) {
     let json = await response.json();
     await browser.storage.local.set({ [accountId]: { oauth_token: json.access_token } });
+    await browser.cloudFile.updateAccount(accountId, { configured: true });
     setTimeout(() => {
       input.disabled = saveButton.disabled = false;
       notAuthed.hidden = true;

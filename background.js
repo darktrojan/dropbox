@@ -88,3 +88,13 @@ browser.cloudFile.onFileDeleted.addListener(async (account, id) => {
 
   uploads.delete(id);
 });
+
+browser.cloudFile.getAllAccounts().then(async (accounts) => {
+  for (let account of accounts) {
+    try {
+      await getOAuthToken(account.id);
+      await browser.cloudFile.updateAccount(account.id, { configured: true });
+    } catch (ex) {
+    }
+  }
+});
