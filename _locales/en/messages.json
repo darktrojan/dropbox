@@ -9,10 +9,10 @@
     "message": "Enter new token"
   },
   "extensionDescription": {
-    "message": "Uploads your large attachments to your DropBox instead of sending them by email"
+    "message": "Uploads your large attachments to your Dropbox instead of sending them by email"
   },
   "extensionName": {
-    "message": "CloudFile Provider for DropBox"
+    "message": "CloudFile Provider for Dropbox"
   },
   "notAuthed_cancelButton": {
     "message": "Cancel"
@@ -21,7 +21,7 @@
     "message": "Authorisation attempt unsuccessful."
   },
   "notAuthed_errorResponse": {
-    "message": "DropBox said:"
+    "message": "Dropbox said:"
   },
   "notAuthed_header": {
     "message": "Authorisation required!"
@@ -33,12 +33,12 @@
     "message": "Save"
   },
   "notAuthed_step1": {
-    "message": "%s to visit the DropBox website and authorise this app."
+    "message": "%s to visit the Dropbox website and authorise this app."
   },
   "notAuthed_step2": {
     "message": "Paste your code:"
   },
   "serviceName": {
-    "message": "DropBox"
+    "message": "Dropbox"
   }
 }
