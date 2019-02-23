@@ -22,6 +22,9 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
       "mode": "add",
       "autorename": true,
       "mute": false,
+    }).replace(/[\u007f-\uffff]/g, (c) => {
+      let unicode = `000${c.charCodeAt(0).toString(16)}`.slice(-4);
+      return `\\u${unicode}`;
     }),
   };
   let fetchInfo = {
@@ -54,9 +57,23 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
   response = await fetch(url, fetchInfo);
   json = await response.json();
 
+  if (response.status != 200) {
+    if (json.error[".tag"] == "shared_link_already_exists") {
+      url = "https://api.dropboxapi.com/2/sharing/list_shared_links";
+      fetchInfo.body = JSON.stringify({ path: uploadInfo.path });
+      response = await fetch(url, fetchInfo);
+      json = await response.json();
+      json = json.links[0];
+    }
+  }
+
   delete uploadInfo.abortController;
 
-  return { url: json.url };
+  if (json && json.url) {
+    return { url: json.url };
+  }
+
+  throw new Error("Upload failed.");
 });
 
 browser.cloudFile.onFileUploadAbort.addListener((account, id) => {
