@@ -12,7 +12,7 @@
     "message": "Uploads your large attachments to your Dropbox instead of sending them by email"
   },
   "extensionName": {
-    "message": "CloudFile Provider for Dropbox"
+    "message": "FileLink Provider for Dropbox"
   },
   "notAuthed_cancelButton": {
     "message": "Cancel"
