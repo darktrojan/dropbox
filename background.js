@@ -112,3 +112,7 @@ browser.cloudFile.getAllAccounts().then(async (accounts) => {
     }
   }
 });
+
+browser.cloudFile.onAccountDeleted.addListener((accountId) => {
+  browser.storage.local.remove(accountId);
+});
